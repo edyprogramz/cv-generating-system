@@ -1,5 +1,5 @@
 from django import forms
-from client.models import Client, Education, Experience, Skill, ProfessionalSummary, Hobby, Language, Reference
+from client.models import Client, Education, Experience, Skill, ProfessionalSummary, Hobby, Language, Reference, Certification
 # from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class ClientForm(forms.ModelForm):
@@ -29,6 +29,11 @@ class SkillForm(forms.ModelForm):
 class HobbyForm(forms.ModelForm):
     class Meta:
         model = Hobby
+        fields = ("name",)
+
+class CertificationForm(forms.ModelForm):
+    class Meta:
+        model = Certification
         fields = ("name",)
 
 class LanguageForm(forms.ModelForm):

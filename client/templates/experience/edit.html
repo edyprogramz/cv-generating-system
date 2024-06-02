@@ -8,13 +8,7 @@
 {% block body %}
 
 <div class="input-page">
-    <div class="left-navbar">
-        <a href="{% url 'client:client_contact_page' %}">CONTACT</a>
-        <a class="active" href="{% url 'client:client_experience_page' %}">EXPERIENCE</a>
-        <a href="{% url 'client:client_education_page' %}">EDUCATION</a>
-        <a href="{% url 'client:client_skill_page' %}">SKILLS</a>
-        <a href="{% url 'client:client_summary_page' %}">SUMMARY</a>
-    </div>
+    {% include "left-navbar.html" with active_page="experience" %}
     
     {% if edit_experience_form %}
         <form method="post" action="{% url 'client:edit_experience' edit_experience_form.instance.pk %}" class="experience-section right-side"> 

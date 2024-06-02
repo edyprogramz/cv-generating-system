@@ -18,10 +18,10 @@
         <nav>
             <li><a href="/" alt="logo">Resume<span class="logospan">Ke</span></a></li>
             <ul class="routers">
+                <li><a class="nav-start-btn" href="{% url 'client:client_contact_page' %}">Build My Resume Now</a></li>
                 <li><a href="{% url 'builder:browse_resume_category' %}">Find your kind of Resume Now?</a></li>
                 <li><a href="{% url 'client:client_contact_page' %}">Builders</a></li>
                 <li><a href="{% url 'builder:browse_resume' %}">Resumes</a></li>
-                <li><a class="nav-start-btn" href="{% url 'client:client_contact_page' %}">Build My Resume Now</a></li>
                 {% if request.user.is_authenticated %}
                     {% comment %} <li>Welcome Back</li> {% endcomment %}
                     {% comment %} <li>{{request.user.username}}</li> {% endcomment %}
@@ -34,14 +34,13 @@
         {% block body %}
         
         {% endblock body %}
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <!--
         <footer>
             <p><a href="">About Us</a></p>
             <p><a href="">Contact Support</a></p>
             <p>&copy; 2024 ResumeKe. All rights reserved.</p>
         </footer>
+        -->
         
         <script src="" async defer></script>
     </body>

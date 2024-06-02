@@ -19,7 +19,7 @@
             <div id="experiences">
                 <a href="{% url 'client:edit_reference' reference.pk %}" class="experiences">
                     <p>{{reference.name}}</p>
-                    <span>{{reference.phone_number}}</span>
+                    <p>{{reference.phone_number}}</p>
                 </a>
                 <form method="post" action="{% url 'client:delete_reference' reference.pk %}" class="del-btn skill-del-btn">
                     {% csrf_token %}
@@ -29,7 +29,7 @@
             </div>
         {% endfor %}
         <br>
-        <button class="add-experience-btn">+Add Skill+</button> 
+        <button class="add-experience-btn">+Add Reference+</button> 
     </div>   
 
     <form method="post" action="" class="new-experience">
@@ -57,8 +57,8 @@
         </div>   
         <div class="input-div">
             <div class="form-group">
-                {{ reference_form.reference_email }}
-                <span class="placeholder">{{ reference_form.reference_email.label_tag }}</span>
+                {{ reference_form.email }}
+                <span class="placeholder">{{ reference_form.email.label_tag }}</span>
             </div>
         </div>      
         

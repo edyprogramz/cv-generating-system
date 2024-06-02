@@ -8,24 +8,18 @@
 {% block body %}
 
 <div class="input-page">
-    {% include "left-navbar.html" with active_page="skill" %}
+    {% include "left-navbar.html" with active_page="certification" %}
     
-    {% if edit_skill_form %}
-    <form method="post" action="{% url 'client:edit_skill' edit_skill_form.instance.pk %}" class="experience-section right-side"> 
+    {% if edit_certification_form %}
+    <form method="post" action="{% url 'client:edit_certification' edit_certification_form.instance.pk %}" class="experience-section right-side"> 
         {% csrf_token %}
         <h1>Edit Skill</h1>
         <br>
 
         <div class="input-div">
             <div class="form-group">
-                {{ edit_skill_form.name }}
-                <span class="placeholder">{{ edit_skill_form.name.label_tag }}</span>
-            </div>
-               
-            <p>On a scale of (1 - 10). Your expertise:</p>
-            <div class="form-group">
-                {{ edit_skill_form.fluency_in_skill }}
-                {% comment %} <span class="placeholder">{{ edit_skill_form.fluency_in_skill.label_tag }}</span> {% endcomment %}
+                {{ edit_certification_form.name }}
+                <span class="placeholder">{{ edit_certification_form.name.label_tag }}</span>
             </div>
         </div>    
         

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from client.forms import ClientForm, EducationForm, ExperienceForm, SkillForm, ProfessionalSummaryForm, HobbyForm, LanguageForm, ReferenceForm
-from client.models import Client, Experience, Education, Skill, ProfessionalSummary, Hobby, Language, Reference
+from client.forms import ClientForm, EducationForm, ExperienceForm, SkillForm, ProfessionalSummaryForm, HobbyForm, LanguageForm, ReferenceForm, CertificationForm
+from client.models import Client, Experience, Education, Skill, ProfessionalSummary, Hobby, Language, Reference, Certification
 
 # Create your views here.
 def contact(request):
@@ -164,6 +164,51 @@ def delete_skill(request, pk):
     return redirect("client:client_skill_page")
 
 @login_required
+def certification(request):
+    client = get_object_or_404(Client, user=request.user)
+    certifications = Certification.objects.filter(client=client)
+
+    if request.method == 'POST':
+        certification_form = CertificationForm(request.POST)
+        if certification_form.is_valid():
+            certification = certification_form.save(commit=False)
+            certification.client = client
+            certification.save()
+            return redirect("client:client_certification_page")
+    else:
+        certification_form = CertificationForm()
+
+    return render(request, "certification/index.html", {
+        "certifications":certifications,
+        "certification_form":certification_form,
+        "active_page":"certification",
+    })
+
+@login_required
+def edit_certification(request, pk):
+    certification = get_object_or_404(Certification, pk=pk, client__user=request.user)
+
+    if request.method == 'POST':
+        edit_certification_form = CertificationForm(request.POST, instance=certification)
+        if edit_certification_form.is_valid():
+            edit_certification_form.save()
+            return redirect("client:client_certification_page")
+    else:
+        edit_certification_form = CertificationForm(instance=certification)
+
+    return render(request, "certification/edit.html", {
+        "edit_certification_form":edit_certification_form,
+    })
+
+@login_required
+def delete_certification(request, pk):
+    certification = get_object_or_404(Certification, pk=pk, client__user=request.user)
+    if request.method == 'POST':
+        certification.delete()
+        return redirect("client:client_certification_page")
+    return redirect("client:client_certification_page")
+
+@login_required
 def summary(request):
     client = get_object_or_404(Client, user=request.user)
     try:
@@ -288,8 +333,8 @@ def reference(request):
             reference.client = client
             reference.save()
             return redirect("client:client_reference_page")
-        else:
-            reference_form = ReferenceForm()
+    else:
+        reference_form = ReferenceForm()
 
     return render(request, "reference/index.html", {
         "references":references,
@@ -306,8 +351,9 @@ def edit_reference(request, pk):
         if edit_reference_form.is_valid():
             edit_reference_form.save()
             return redirect("client:client_reference_page")
-        else:
-            edit_reference_form = ReferenceForm(instance=reference)
+    else:
+        edit_reference_form = ReferenceForm(instance=reference)
+        
     return render(request, "reference/edit.html", {
         "edit_reference_form":edit_reference_form,
     })

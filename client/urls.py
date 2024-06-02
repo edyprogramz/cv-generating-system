@@ -1,5 +1,5 @@
 from django.urls import path
-from client.views import contact, experience, edit_experience, education, edit_education, skill, edit_skill, summary, delete_experience, delete_education, delete_skill, hobby, edit_hobby, delete_hobby, language, edit_language, delete_language, reference, edit_reference, delete_reference
+from client.views import contact, experience, edit_experience, education, edit_education, skill, edit_skill, summary, delete_experience, delete_education, delete_skill, hobby, edit_hobby, delete_hobby, language, edit_language, delete_language, reference, edit_reference, delete_reference, certification, edit_certification, delete_certification
 
 app_name = "client" 
 
@@ -28,6 +28,10 @@ urlpatterns = [
     path('reference/', reference, name="client_reference_page"),
     path('reference/<int:pk>/', edit_reference, name="edit_reference"),
     path('reference/<int:pk>/delete/', delete_reference, name="delete_reference"),
+
+    path('certification/', certification, name="client_certification_page"),
+    path('certification/<int:pk>/', edit_certification, name="edit_certification"),
+    path('certification/<int:pk>/delete/', delete_certification, name="delete_certification"),
 
     path('summary/', summary, name="client_summary_page"),
 ]

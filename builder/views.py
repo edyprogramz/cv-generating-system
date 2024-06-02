@@ -4,7 +4,7 @@ from django.template import Template, Context
 from django.contrib.auth.decorators import login_required
 from weasyprint import HTML
 # from django.template.loader import render_to_string
-from client.models import Client, ProfessionalSummary, Education, Experience, Skill
+from client.models import Client, ProfessionalSummary, Education, Experience, Skill, Hobby, Reference, Language, Certification
 # pdf 
 # from xhtml2pdf import pisa
 # from django.template.loader import get_template
@@ -45,6 +45,11 @@ def generate_pdf(request, client_id, template_id):
     education_list = Education.objects.filter(client=client)
     skills = Skill.objects.filter(client=client)
     professional_summary = get_object_or_404(ProfessionalSummary, client=client)
+    # added
+    languages = Language.objects.filter(client=client)
+    references = Reference.objects.filter(client=client)
+    hobbies = Hobby.objects.filter(client=client)
+    certifications = Certification.objects.filter(client=client)
 
     # Read the template content from the file
     with open(template_model.template_file.path, 'r', encoding='utf-8') as file:
@@ -59,7 +64,12 @@ def generate_pdf(request, client_id, template_id):
         'experiences': experiences,
         'education_list': education_list,
         'skills': skills,
-        'professional_summary': professional_summary
+        'professional_summary': professional_summary,
+        # added
+        'languages':languages,
+        'references':references,
+        'hobbies':hobbies,
+        'certifications':certifications
     })
 
     # Render the template with the context
@@ -83,6 +93,10 @@ def generate_docx(request, client_id, template_id):
     education_list = Education.objects.filter(client=client)
     skills = Skill.objects.filter(client=client)
     professional_summary = get_object_or_404(ProfessionalSummary, client=client)
+    # added
+    languages = Language.objects.filter(client=client)
+    references = Reference.objects.filter(client=client)
+    hobbies = Hobby.objects.filter(client=client)
 
     # Create a new Document
     document = Document()

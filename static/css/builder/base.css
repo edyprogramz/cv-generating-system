@@ -68,7 +68,7 @@ footer p{
 .nav-start-btn{
     padding: 3px 10px;
     border-radius: 10px;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
     text-decoration: none;
     color: rgb(24, 23, 23);
     font-weight: 700;
