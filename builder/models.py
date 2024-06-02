@@ -16,15 +16,8 @@ class Template(models.Model):
     template_file = models.FileField(upload_to='resumes/')
     categories = models.ManyToManyField(TemplateCategory, related_name='templates')
     description = RichTextField(
-        default='Who should use this? | Format and styling details: | MAJOR FEATURES, TEXT DETAILS ...'
+        default='Who should use this?'
     )
-    num_educations = models.IntegerField(default=0)
-    num_experiences = models.IntegerField(default=0)
-    num_skills = models.IntegerField(default=0)
-    num_languages = models.IntegerField(default=0)
-    num_hobbies = models.IntegerField(default=0)
-    num_references = models.IntegerField(default=0)
-
     
     def __str__(self):
         return self.template_name
