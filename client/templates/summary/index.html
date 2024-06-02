@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="input-page">
+    {% include "left-navbar.html" with active_page="summary" %}
+
+    <form method="post" action="" class="right-side" >
+        {% csrf_token %}
+        <h1>Proffessional Summary</h1>
+        <p>Write something short about you to you employer..</p>
+        <br>
+
+        <!--{{ summary_form.professional_summary.label_tag }}<br>-->
+        {{ summary_form.professional_summary }}
+            
+        
+
+        
+        <div class="button-div center">
+            <a href="" class="cancel-btn">Cancel</a>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+    
+</div>
+
+{% endblock body %}

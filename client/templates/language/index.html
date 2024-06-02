@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="input-page">
+    {% include "left-navbar.html" with active_page="language" %}
+    
+    
+    <div class="experience-section right-side">
+        <h1>Languages</h1>
+        <p></p>
+        <br>
+        {% for language in languages %}
+            <div id="experiences">
+                <a href="{% url 'client:edit_language' language.pk %}" class="experiences">
+                    <p>{{language.name}}</p>
+                </a>
+                <form method="post" action="{% url 'client:delete_language' language.pk %}" class="del-btn skill-del-btn">
+                    {% csrf_token %}
+                    <button type="submit"><img src="{% static 'assets/bin.png' %}" alt="delete-icon"/></button>
+                    <button><a href="{% url 'client:edit_language' language.pk %}">Edit</a></button>
+                </form>
+            </div>
+        {% endfor %}
+        <br>
+        <button class="add-experience-btn">+Add Language+</button> 
+    </div>   
+
+    <form method="post" action="" class="new-experience">
+        {% csrf_token %}
+        <h1>What Languages do you speak?</h1>
+        <p>Listing 2-3 languages is best.</p>
+        <br>
+
+        <div class="input-div">
+            <div class="form-group">
+                {{ language_form.name }}
+                <span class="placeholder">{{ language_form.name.label_tag }}</span>
+            </div>
+        </div>        
+        
+        <br>
+        
+        <div class="button-div center">
+            <a href="" class="cancel-btn">Cancel</a>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    
+</div>
+<script src="{% static 'js/new-experience.js' %}"></script>
+
+{% endblock body %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/resumes.css' %}">
+{% endblock head %}
+
+{% block body %}
+<div class="resumes-page">
+    <div class="hero-page">
+        <h2>Resume Templates</h2>
+        <br>
+        <p>Need a job? Our huge range of free resume templates can help. Simply choose your favorite, download directly to Word or open in Google Docs, and fill it out. We also provide a copy-paste template, and show you how to fill out your own resume template with an instructional video.</p>
+        <br>
+        <br>
+        <a class="hero-btn" href="{% url 'client:client_contact_page' %}">Build My Resume</a>
+    </div>
+
+    <div class="templates">
+        <div class="categories">
+            {% for category in categories %}
+                <div class="category">
+                    <a href="">{{category}}</a>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="template-preview">
+            {% for template in templates %}
+                <div class="template-thumbnails-div">
+                    <img src="{{template.template_thumbnail.url}}" alt="template-img">
+                </div>
+                <div class="template-details">
+                    {{template.description | safe}}
+                    <br><br><br>
+                    <div class="button-div">
+                        <h3>Resume Builder</h3>
+                        <br>
+                        <p>Use our software and create a professional resume using a premade template. Let the Genius resume builder help you make your resume fast.</p>
+                        <br>
+                        <a class="hero-btn temp-desc-btn" href="{% url 'client:client_contact_page' %}">Build My Resume Now</a>
+                    </div>
+                </div>
+                    
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+</div>
+{% endblock body %}
+
+{% comment %} <p>{{ template.template_name }}</p> {% endcomment %}
+                    {% comment %} <a href="{% url 'builder:generate_pdf' client.id template.id %}">GENERATE pdf</a> {% endcomment %}
+                    {% comment %} <a href="{% url 'builder:generate_docx' client.id template.id %}">GENERATE docX</a> {% endcomment %}
+                

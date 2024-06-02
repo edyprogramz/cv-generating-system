@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/home.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="home">
+    <div class="welcome-message">
+        <h1>GET STARTED</h1>
+        <p>How Would You Like To Start?</p>
+    </div>
+    <div class="home-guest-choice-section">
+        <a href="{% url 'builder:browse_resume' %}">
+            <img src="{% static 'assets/browse.png' %}" alt="browse-icon"/>
+            <p>EXPLORE THE TEMPLATES?</p>
+        </a>
+        <a href="{% url 'client:client_contact_page' %}">
+            <img src="{% static 'assets/write.png' %}" alt="write-icon"/>
+            <p>ADD YOUR INFORMATION FIRST?</p>
+        </a>
+    </div>
+    
+    
+</div>
+
+
+{% endblock body %}

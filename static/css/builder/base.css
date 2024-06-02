@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#app{
+    /* border: 2px solid black; */
+    /* height: 100vh; */
+    /* overflow: hidden; */
+    background-color: FFFDFA;
+}
+nav{
+    height: 5vh;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: padding 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+nav:hover{
+    padding: 40px;
+    background-color: whitesmoke;
+}
+.logospan{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+nav li{
+    list-style: none;
+}
+nav li a{
+    text-decoration: none;
+    font-weight: 600;
+}
+nav li a:hover{
+    text-decoration: underline;
+    transition: .10;
+    text-decoration-color: rgb(4, 19, 19);
+    text-decoration-thickness: 20%;
+}
+nav .routers{
+    /* border: 2px solid black; */
+    /* padding: 5px; */
+    padding-right: 20px;
+    margin-right: 20px;
+}
+nav .routers li{
+    /* border: 2px solid black; */
+    display: inline-block;
+    /* padding-bottom: 5px; */
+    margin-left: 20px;
+}
+footer{
+    margin-top: 20px;
+    /* border: 2px solid red; */
+    background-color: antiquewhite;
+    /* background-color: #FFF5EE; */
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: .25vw; */
+    /* width: 99.5vw; */
+    padding: 10px;
+}
+footer p{
+    margin: 5px 20px;
+    padding: 5px;
+}
+.nav-start-btn{
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    text-decoration: none;
+    color: rgb(24, 23, 23);
+    font-weight: 700;
+}
+.nav-start-btn:hover{
+    text-decoration: none;
+    background-color: aqua;
+}

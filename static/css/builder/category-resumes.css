@@ -1,0 +1,104 @@
+/* .resumes-browse-page{
+    border: 2px solid black;
+}
+.template-preview{
+    border: 2px solid black;
+}
+#template-img{
+    border: 2px solid red;
+    height: 200px;
+}
+#template-img img{
+    height: 100%;
+} */
+.resumes-browse-page{
+    border: 2px solid black;
+}
+.hero-page{
+    background-color: aqua;
+    padding: 100px;
+    text-align: center;
+}
+.hero-btn{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    text-decoration: none;
+    color: rgb(24, 23, 23);
+    font-weight: 700;
+}
+.hero-btn:hover{
+    background-color: aliceblue;
+}
+.templates{
+    border: 1px solid rgb(228, 34, 34);
+    padding: 20px;
+}
+.template-preview{
+    /* border: 2px solid green; */
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    padding: 20px;
+}
+.template-thumbnails-div{
+    padding: 20px;
+}
+.template-thumbnails-div img{
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+}
+.template-details .button-div{
+    /* border: 2px solid black; */
+    background-color:azure;
+    margin: 10px;
+    margin-left: 0;
+    padding: 20px 15px 40px;
+    border-radius: 10px;
+}
+.temp-desc-btn{
+    border: 1px solid black;
+}
+.categories{
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.category a{
+    border: 2px solid black;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+.category a:hover{
+    background-color: aquamarine;
+}
+
+
+
+@media (max-width: 991.98px) {
+    .template-preview{
+        border: 2px solid rgb(0, 13, 128);
+        display: block;
+    }
+    .template-details{
+        /* border: 2px solid rgb(0, 13, 128); */
+        margin: 20px;
+    }
+}
+/* very small devices */
+@media (max-width: 575.98px) {
+    .template-preview{
+        /* border: 2px solid rgb(73, 128, 0); */
+        display: block;
+    }
+    .template-thumbnails-div{
+        padding: 0;
+    }
+    .template-thumbnails-div img{
+        /* height: 550px; */
+        object-fit: cover;
+    }
+}

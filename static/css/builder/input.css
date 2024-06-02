@@ -1,0 +1,164 @@
+.input-page{
+    border: 2px solid #000000;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.input-page .left-navbar{
+    border: 2px solid black;
+    padding: 15px 10px 10px;
+    height: fit-content;
+}
+.input-page .left-navbar a{
+    text-decoration: none;
+    display: block;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.input-page .left-navbar a:hover{
+    background-color: whitesmoke;
+
+}
+.input-page .left-navbar a.active{
+    background-color: whitesmoke;
+}
+.input-page .right-side{
+    border: 2px solid rgb(133, 130, 130);
+    flex: .95;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+} 
+.input-div .center{
+    /* border: 2px solid black; */
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.right-side .input-div{
+    border: 1px solid rgb(129, 126, 126);
+    margin-top: 15px;
+    padding: 20px;
+    width: fit-content;
+    justify-content: center;
+}
+input{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    border: 1px solid rgb(133, 130, 130);
+}
+.cancel-btn{
+    text-decoration: none;
+    color: #000000;    
+    padding: 5px 20px;
+}
+.cancel-btn,
+button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid rgb(133, 130, 130);
+    font-weight: 700;
+    margin: 10px;
+}
+button:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+}
+.button-div{
+    /* border: 2px solid red; */
+    width: 100%;
+}
+
+
+
+
+
+.form-group {
+    border: 1px solid rgb(146, 138, 138);
+    position: relative;
+    margin-bottom: 1.5rem;
+    /* width: fit-content; */
+}
+.form-group input {
+    /* width: 100%; */
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.location .form-group.custom-country-widget{
+    width: 50%;
+    border: 2px solid black;
+}
+
+.placeholder {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    transition: all 0.2s;
+    pointer-events: none;
+    color: #999;
+}
+.form-group input:focus + .placeholder,
+.form-group input:not(:placeholder-shown) + .placeholder {
+    top: -1rem;
+    left: 0.5rem;
+    font-size: 0.75rem;
+    color: #666;
+    background: white;
+    padding: 0 0.25rem;
+}
+
+.new-experience{
+    border: 1px solid black;
+    padding: 20px;
+    display: none;
+}
+
+#experiences{
+    border: 1px solid black;
+    width: 30vw;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+#experiences a{
+    text-decoration: none;
+}
+#experiences:hover{
+    background-color: aquamarine;
+    transition: .5 ease;
+}
+#experiences a p:first-child{
+    color: black;
+    font-weight: 500;
+}
+
+.del-btn{
+    /* border: 2px solid black; */
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.del-btn button img{
+    height: 20px;
+}
+.del-btn button{
+    padding: 0 5px;
+    display: block;
+}
+
+.skill-del-btn{
+    display: flex;
+    align-items: center;
+}

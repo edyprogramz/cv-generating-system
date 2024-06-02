@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="input-page">
+    {% include "left-navbar.html" with active_page="skill" %}
+    
+    
+    <div class="experience-section right-side">
+        <h1>Choose your top skills</h1>
+        <p>You're on a roll. Let's find relevant skills for the job your applying for.</p>
+        <br>
+        {% for skill in skills %}
+            <div id="experiences">
+                <a href="{% url 'client:edit_skill' skill.pk %}" class="experiences">
+                    <p>{{skill.name}}</p>
+                </a>
+                <form method="post" action="{% url 'client:delete_skill' skill.pk %}" class="del-btn skill-del-btn">
+                    {% csrf_token %}
+                    <button type="submit"><img src="{% static 'assets/bin.png' %}" alt="delete-icon"/></button>
+                    <button><a href="{% url 'client:edit_skill' skill.pk %}">Edit</a></button>
+                </form>
+            </div>
+        {% endfor %}
+        <br>
+        <button class="add-experience-btn">+Add Skill+</button> 
+    </div>   
+
+    <form method="post" action="" class="new-experience">
+        {% csrf_token %}
+        <h1>Skill</h1>
+        <p>Listing 6-10 skills is best.</p>
+        <br>
+
+        <div class="input-div">
+            <div class="form-group">
+                {{ skill_form.name }}
+                <span class="placeholder">{{ skill_form.name.label_tag }}</span>
+            </div>
+        </div> 
+        <p>Hey on a scale of (1 - 10). What's your expertise on this skill?</p>
+        <div class="input-div">
+            <div class="form-group">
+                {{ skill_form.fluency_in_skill }}
+                <span class="placeholder">{{ skill_form.fluency_in_skill.label_tag }}</span>
+            </div>
+        </div>       
+        
+        <br>
+        
+        <div class="button-div center">
+            <a href="" class="cancel-btn">Cancel</a>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    
+</div>
+<script src="{% static 'js/new-experience.js' %}"></script>
+
+{% endblock body %}

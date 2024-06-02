@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+        <style>
+            *{
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+            @page {
+                size: A4;
+            }
+            body{
+                font-family: 'Lato', sans-serif;
+                font-weight: 400;
+                color: #222;
+                font-size: 14px;
+                line-height: 26px;
+                padding-bottom: 50px;
+                width: 6.1in;
+                height: 7.86in;
+                /* border: 2px solid black; */
+                padding: 5px;
+            }
+            .header{
+                border-bottom: 1px solid rgb(231, 225, 225);
+                /* padding: 2px; */
+            }
+            .full-name{
+                text-transform: uppercase;
+                font-size:x-large;
+                margin-bottom: 4px;
+            }
+            .first-name{
+                font-weight: 700;
+            }
+            .last-name{
+                font-weight: 300;
+            }
+            .email,
+            .phone {
+                color: #999;
+                font-weight: 300;
+            } 
+            .separator {
+                height: 10px;
+                display: inline-block;
+                border-left: 2px solid #999;
+                margin: 0px 10px;
+            }
+            .contact-info {
+                margin-bottom: 20px;
+            }
+            .company-when{
+                display: flex;
+                align-items: center;
+            }
+            .details{
+                font-size: small;
+                display: flex;
+                align-items:first baseline;
+                gap: 10px;
+                justify-content: space-between;
+            }
+            .experience-section{
+                border-right: 1px solid gray;
+                padding-right: 20px;
+                flex: .99;
+                padding: 10px;
+            }
+            .education-skill{
+                padding: 0 15px 0 0;
+                display: flex;
+                justify-content: space-between;
+            }
+            .education-section{
+                padding: 15px;
+            }
+            .skill-language{
+                padding: 15px;
+                justify-content: space-between;
+            }
+            .education,
+            .language p,
+            .skill p{
+                font-size:smaller;
+            }
+            .skill-section{
+                border-bottom: 1px solid gray;
+            }
+            h4{
+                margin-bottom: -5px;
+            }
+            .experience{
+                font-size: x-small;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="header">
+                <div class="full-name">
+                    <span class="first-name">{{ client.first_name|default:"" }} </span> 
+                    <span class="last-name">{{ client.last_name|default:"" }}</span>
+                </div>
+                <div class="contact-info">
+                    <span class="email">Email: </span>
+                    <span class="email-val">{{ client.email |default:"" }}</span>
+                    <span class="separator"></span>
+                    <span class="phone">Phone: </span>
+                    <span class="phone-val">{{ client.phone_number |default:""}} </span>
+                </div>
+
+                <div class="about">
+                    <span class="position">{{ client.desired_job_title |default:"" }} </span>
+                    <span class="desc">
+                        {{ professional_summary.professional_summary|safe |default:"" }}
+                    </span>
+                </div>
+            </div>
+            <div class="details">
+                <div class="experience-section">
+                    <h3 class="section__title">Experience</h3>
+                    {% for experience in experiences %}
+                        <div class="experience">
+                            <h4>{{ experience.job_title |default:"" }}</h4>
+                            <div class="company-when">
+                                <p>{{ experience.company |default:"" }}</p>
+                                <span class="separator"></span>
+                                <p>{{ experience.start_month |default:"" }} {{ experience.start_year |default:"" }}</p>
+                            </div>
+                            <li>Developed and implemented software solutions for clients utilizing Java, JavaScript, HTML and CSS</li>
+                            <li>Designed user interfaces using React.js, AngularJS, and jQuery libraries</li>
+                            <li>Troubleshot, debugged, and resolved technical issues with existing software applications.</li>
+                            <li>Participated in daily standup meetings to discuss progress on current tasks</li>  
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+                <div class="education-skill">
+                    <div class="education-section">
+                        <h3 class="section__title">Education</h3>
+                        {% for education in education_list %}
+                            <div class="education">
+                                <h4>{{ education.program_pursued |default:"" }}</h4>
+                                <p>{{ education.institution_name |default:"" }}</p>
+                                <div class="duration">
+                                    <p>{{ education.institution_location |default:"" }}</p>
+                                </div>
+                                <p>Degree</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="skill-language">
+                        <div class="skill-section">
+                            <h3 class="section__title">Skill</h3>
+                            {% for skill in skills %}
+                                <div class="skill">
+                                    <p>{{ skill.name |default:"" }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="language-section">
+                            <h3 class="section__title">Languages</h3>
+                            <div class="language">
+                                <p>English</p>
+                                <p>French</p>
+                                <p>Spanish</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>    
+        <script src="" async defer></script>
+    </body>
+</html>

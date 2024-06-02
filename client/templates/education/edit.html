@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="input-page">
+    <div class="left-navbar">
+        <a href="{% url 'client:client_contact_page' %}">CONTACT</a>
+        <a class="active" href="{% url 'client:client_experience_page' %}">EXPERIENCE</a>
+        <a href="{% url 'client:client_education_page' %}">EDUCATION</a>
+        <a href="{% url 'client:client_skill_page' %}">SKILLS</a>
+        <a href="{% url 'client:client_summary_page' %}">SUMMARY</a>
+    </div>
+    
+    {% if edit_education_form %}
+    <form method="post" action="{% url 'client:edit_education' edit_education_form.instance.pk %}" class="experience-section right-side"> 
+        {% csrf_token %}
+        <h1>Edit Education</h1>
+        <br>
+
+        <div class="input-div">
+            <div class="center">
+                <div class="form-group">
+                    {{ edit_education_form.institution_name }}
+                    <span class="placeholder">{{ edit_education_form.institution_name.label_tag }}</span>
+                </div>
+                
+                <div class="form-group">
+                    {{ edit_education_form.institution_location }}
+                    <span class="placeholder">{{ edit_education_form.institution_location.label_tag }}</span>
+                </div>
+            </div>
+
+            <div class="center">
+                <div class="form-group">
+                    {{ edit_education_form.program_pursued }}
+                    <span class="placeholder">{{ edit_education_form.program_pursued.label_tag }}</span>
+                </div>
+                <div class="form-group">
+                    {{ edit_education_form.field_of_study }}
+                    <span class="placeholder">{{ edit_education_form.field_of_study.label_tag }}</span>
+                </div>
+            </div>
+
+            <div class="center">
+                <div class="form-group">
+                    {{ edit_education_form.graduation_month }}
+                    <span class="placeholder">{{ edit_education_form.graduation_month.label_tag }}</span>
+                </div>
+                <div class="form-group">
+                    {{ edit_education_form.graduation_year }}
+                    <span class="placeholder">{{ edit_education_form.graduation_year.label_tag }}</span>
+                </div>
+            </div>
+        </div>        
+        
+        <br>
+        
+        <div class="button-div center">
+            <a href="{% url 'client:client_education_page' %}" class="cancel-btn">Cancel</a>
+            <button type="submit">Update</button>
+        </div>
+    </form> 
+    {% endif %}
+
+    
+</div>
+<script src="{% static 'js/new-experience.js' %}"></script>
+
+{% endblock body %}

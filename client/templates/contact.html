@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<h1></h1>
+
+<div class="input-page">
+    {% include "left-navbar.html" with active_page="contact" %}
+
+
+    <form method="post" action="" class="section contact-section right-side" enctype="multipart/form-data" id="contact-section">
+        {% csrf_token %}
+    
+        <h1>Contact</h1>
+        <p>Let's start with the basics. To ensure employers can reach you, input at least your name, email, and phone number.</p>
+        <br>
+        <div class="input-div">  
+            <div class="form-group">
+                {{ contact_form.profile_img }}
+                <span class="placeholder">{{ contact_form.profile_img.label_tag }}</span>
+            </div>  
+            <!--profile error check-->
+            {% if contact_form.profile_img.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.profile_img.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                    <br><br>
+                </div>
+            {% endif %}
+            
+            <div class="names center">
+                <div class="form-group">
+                    {{ contact_form.first_name }}
+                    <span class="placeholder">{{ contact_form.first_name.label_tag }}</span>
+                </div>
+                <div class="form-group">
+                    {{ contact_form.last_name }}
+                    <span class="placeholder">{{ contact_form.last_name.label_tag }}</span>
+                </div>
+            </div>
+            <!--first-name error check-->
+            {% if contact_form.first_name.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.first_name.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br>
+            {% endif %}
+            <!--last-name error check-->
+            {% if contact_form.last_name.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.last_name.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br><br>
+            {% endif %}
+            
+            <div class="form-group">
+                {{ contact_form.desired_job_title }}
+                <span class="placeholder">{{ contact_form.desired_job_title.label_tag }}</span>
+            </div>
+            <!--job-title error check-->
+            {% if contact_form.desired_job_title.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.desired_job_title.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br><br>
+            
+            {% endif %}
+            
+
+
+            
+
+            <div class="form-group">
+                {{ contact_form.phone_number }}
+                <span class="placeholder">{{ contact_form.phone_number.label_tag }}</span>
+            </div>
+            <!--phone number error check-->
+            {% if contact_form.phone_number.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.phone_number.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br><br>
+            {% endif %}
+            
+
+            <div class="location center">
+                <div class="form-group">
+                    {{ contact_form.country }}
+                    <span class="placeholder">{{ contact_form.country.label_tag }}</span>
+                </div>
+                <div class="form-group">
+                    {{ contact_form.city }}
+                    <span class="placeholder">{{ contact_form.city.label_tag }}</span>
+                </div>
+            </div>
+            <!--country error check-->
+            {% if contact_form.country.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.country.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br>
+            {% endif %}
+            <!--city error check-->
+            {% if contact_form.city.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.city.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br><br>
+            {% endif %}
+            
+            
+            <div class="form-group">
+                {{ contact_form.email }}
+                <span class="placeholder">{{ contact_form.email.label_tag }}</span>
+            </div>
+            <!--email error check-->
+            {% if contact_form.email.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.email.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br><br>
+            {% endif %}
+            
+            <div class="form-group">
+                {{ contact_form.linkedIn_url }}
+                <span class="placeholder">{{ contact_form.linkedIn_url.label_tag }}</span>
+            </div>
+            <!--linkedInURL error check-->
+            {% if contact_form.linkedIn_url.errors %}
+                <div class="error-div">
+                    {% for error in contact_form.linkedIn_url.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <br><br>
+            {% endif %}
+            
+            
+            <br>
+            <div class="button-div center">
+                <a href="" class="cancel-btn">Cancel</a>
+                <button type="submit">Save To Preview</button>
+            </div>
+                    
+        </div>
+    </form>
+
+
+    <!--
+    <div class="section certifications-section right-side" id="certifications-section">
+        <h1>Certification</h1>
+    </div>
+
+
+
+    <form method="post" action="" class="section summary-section right-side" id="summary-section">
+        {% csrf_token %}
+        <h1>Professional Summary</h1>
+        <p>This section will usually be one of the first things a hiring manager reads. It tells them, “Here's who I am, and here's what I can do for your company”.</p>
+
+        
+        <textarea></textarea>
+
+        <br>
+        <button type="submit">Save</button>
+    </form>
+    -->
+    
+</div>
+
+{% endblock body %}

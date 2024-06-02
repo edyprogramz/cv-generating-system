@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="input-page">
+    {% include "left-navbar.html" with active_page="reference" %}
+    
+    {% if edit_reference_form %}
+    <form method="post" action="{% url 'client:edit_reference' edit_reference_form.instance.pk %}" class="experience-section right-side"> 
+        {% csrf_token %}
+        <h1>Edit Reference</h1>
+        <br>
+
+        <div class="input-div">
+            <div class="form-group">
+                {{ edit_reference_form.name }}
+                <span class="placeholder">{{ edit_reference_form.name.label_tag }}</span>
+            </div>
+        </div> 
+        <div class="input-div">
+            <div class="form-group">
+                {{ edit_reference_form.in_which_company }}
+                <span class="placeholder">{{ edit_reference_form.in_which_company.label_tag }}</span>
+            </div>
+        </div>
+        <div class="input-div">
+            <div class="form-group">
+                {{ edit_reference_form.phone_number }}
+                <span class="placeholder">{{ edit_reference_form.phone_number.label_tag }}</span>
+            </div>
+        </div>
+        <div class="input-div">
+            <div class="form-group">
+                {{ edit_reference_form.email }}
+                <span class="placeholder">{{ edit_reference_form.email.label_tag }}</span>
+            </div>
+        </div>       
+        
+        <br>
+        <div class="button-div center">
+            <a href="{% url 'client:client_reference_page' %}" class="cancel-btn">Cancel</a>
+            <button type="submit">Update</button>
+        </div>
+    </form> 
+    {% endif %}
+
+    
+</div>
+<script src="{% static 'js/new-experience.js' %}"></script>
+
+{% endblock body %}

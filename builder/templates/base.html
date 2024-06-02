@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> resume builder</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/builder/base.css' %}">
+        {% block head %}{% endblock head %}
+    </head>
+    <body id="app">
+        <nav>
+            <li><a href="/" alt="logo">Resume<span class="logospan">Ke</span></a></li>
+            <ul class="routers">
+                <li><a href="{% url 'builder:browse_resume_category' %}">Find your kind of Resume Now?</a></li>
+                <li><a href="{% url 'client:client_contact_page' %}">Builders</a></li>
+                <li><a href="{% url 'builder:browse_resume' %}">Resumes</a></li>
+                <li><a class="nav-start-btn" href="{% url 'client:client_contact_page' %}">Build My Resume Now</a></li>
+                {% if request.user.is_authenticated %}
+                    {% comment %} <li>Welcome Back</li> {% endcomment %}
+                    {% comment %} <li>{{request.user.username}}</li> {% endcomment %}
+                {% else %}
+                    <li><a class="nav-start-btn" href="{% url 'user:signup' %}">Login/Signup</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        
+        {% block body %}
+        
+        {% endblock body %}
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <footer>
+            <p><a href="">About Us</a></p>
+            <p><a href="">Contact Support</a></p>
+            <p>&copy; 2024 ResumeKe. All rights reserved.</p>
+        </footer>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

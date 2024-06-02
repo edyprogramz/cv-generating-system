@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: red; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .section { margin-bottom: 20px; }
+        .section h2 { border-bottom: 1px solid #000; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ client.profile_img.url }}" alt="Profile Image" style="width: 100px; height: 100px;">
+        <h1>{{ client.first_name }} {{ client.last_name }}</h1>
+        <p>{{ client.phone_number }} | {{ client.email }}</p>
+        <p>{{ client.city }}, {{ client.country }}</p>
+        <p>{{ client.linkedIn_url }}</p>
+        <h3>{{ client.desired_job_title }}</h3>
+    </div>
+
+    <div class="section">
+        <h2>Professional Summary</h2>
+        <p>{{ professional_summary.professional_summary|safe }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Experience</h2>
+        {% for experience in experiences %}
+            <h3>{{ experience.job_title }} at {{ experience.company }}</h3>
+            <p>{{ experience.start_month }} {{ experience.start_year }} - {{ experience.end_month }} {{ experience.end_year }}</p>
+            <p>{{ experience.city }}, {{ experience.state }}, {{ experience.country }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        {% for education in education_list %}
+            <h3>{{ education.program_pursued }} at {{ education.institution_name }}</h3>
+            <p>{{ education.graduation_month }} {{ education.graduation_year }}</p>
+            <p>{{ education.institution_location }}</p>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

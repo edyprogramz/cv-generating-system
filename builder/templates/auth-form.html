@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/auth-form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/input-field.css' %}">
+{% endblock head %}
+
+{% block body %}
+    <form method="post" action="" class="auth-form">
+    {% csrf_token %}
+
+        <h2>{{header}}</h2>
+        {% if form_type == "login" %}
+            <a href="{% url 'user:signup' %}">signup</a>
+        {% else %}
+            <a href="{% url 'user:login' %}">login</a>
+        {% endif %}
+        <br><br><br>
+        {% if form.non_field_errors %}
+            <div class="non-field-errors">
+                {% for error in form.non_field_errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <br>
+        {% endif %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                <div class="form-group">
+                    {{ field }}
+                    <span class="placeholder">{{ field.label_tag }}</span>
+                </div>
+                {% if field.errors %}
+                    <div class="field-errors">
+                        {% for error in field.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <br>
+        {% if form_type == "login" %}
+            <button type="submit">login</button>
+        {% else %}
+            <button type="submit">Register</button>
+        {% endif %}
+        <br>
+        {% if form_type == "login" %}
+            <a href="{% url 'user:signup' %}">don't have an account?</a>
+        {% else %}
+            <a href="{% url 'user:login' %}">i have an account?</a>
+        {% endif %}
+    </form>
+    <script src="{% static 'js/input-field.js' %}"></script>
+{% endblock body %}

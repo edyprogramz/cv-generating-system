@@ -1,0 +1,10 @@
+<div class="left-navbar">
+    <a href="{% url 'client:client_contact_page' %}" class="{% if active_page == 'contact' %}active{% endif %}">CONTACT</a>
+    <a href="{% url 'client:client_experience_page' %}" class="{% if active_page == 'experience' %}active{% endif %}">EXPERIENCE</a>
+    <a href="{% url 'client:client_education_page' %}" class="{% if active_page == 'education' %}active{% endif %}">EDUCATION</a>
+    <a href="{% url 'client:client_skill_page' %}" class="{% if active_page == 'skill' %}active{% endif %}">SKILL</a>
+    <a href="{% url 'client:client_summary_page' %}" class="{% if active_page == 'summary' %}active{% endif %}">SUMMARY</a>
+    <a href="{% url 'client:client_hobby_page' %}" class="{% if active_page == 'hobby' %}active{% endif %}">HOBBY</a>
+    <a href="{% url 'client:client_language_page' %}" class="{% if active_page == 'language' %}active{% endif %}">LANGUAGE</a>
+    <a href="{% url 'client:client_reference_page' %}" class="{% if active_page == 'reference' %}active{% endif %}">REFERENCE</a>
+</div>

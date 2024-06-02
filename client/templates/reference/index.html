@@ -1,0 +1,75 @@
+ {% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="input-page">
+    {% include "left-navbar.html" with active_page="reference" %}
+    
+    
+    <div class="experience-section right-side">
+        <h1>References</h1>
+        <p>Add References To Increase Credibility</p>
+        <br>
+        {% for reference in references %}
+            <div id="experiences">
+                <a href="{% url 'client:edit_reference' reference.pk %}" class="experiences">
+                    <p>{{reference.name}}</p>
+                    <span>{{reference.phone_number}}</span>
+                </a>
+                <form method="post" action="{% url 'client:delete_reference' reference.pk %}" class="del-btn skill-del-btn">
+                    {% csrf_token %}
+                    <button type="submit"><img src="{% static 'assets/bin.png' %}" alt="delete-icon"/></button>
+                    <button><a href="{% url 'client:edit_reference' reference.pk %}">Edit</a></button>
+                </form>
+            </div>
+        {% endfor %}
+        <br>
+        <button class="add-experience-btn">+Add Skill+</button> 
+    </div>   
+
+    <form method="post" action="" class="new-experience">
+        {% csrf_token %}
+        <h1>Add Reference</h1>
+        <br>
+
+        <div class="input-div">
+            <div class="form-group">
+                {{ reference_form.name }}
+                <span class="placeholder">{{ reference_form.name.label_tag }}</span>
+            </div>
+        </div>    
+        <div class="input-div">
+            <div class="form-group">
+                {{ reference_form.in_which_company }}
+                <span class="placeholder">{{ reference_form.in_which_company.label_tag }}</span>
+            </div>
+        </div>   
+        <div class="input-div">
+            <div class="form-group">
+                {{ reference_form.phone_number }}
+                <span class="placeholder">{{ reference_form.phone_number.label_tag }}</span>
+            </div>
+        </div>   
+        <div class="input-div">
+            <div class="form-group">
+                {{ reference_form.reference_email }}
+                <span class="placeholder">{{ reference_form.reference_email.label_tag }}</span>
+            </div>
+        </div>      
+        
+        <br>
+        <div class="button-div center">
+            <a href="" class="cancel-btn">Cancel</a>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    
+</div>
+<script src="{% static 'js/new-experience.js' %}"></script>
+
+{% endblock body %}

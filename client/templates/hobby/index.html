@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/builder/input.css' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="input-page">
+    {% include "left-navbar.html" with active_page="hobby" %}
+    
+    
+    <div class="experience-section right-side">
+        <h1>Choose your Hobbies</h1>
+        <p></p>
+        <br>
+        {% for hobby in hobbies %}
+            <div id="experiences">
+                <a href="{% url 'client:edit_hobby' hobby.pk %}" class="experiences">
+                    <p>{{hobby.name}}</p>
+                </a>
+                <form method="post" action="{% url 'client:delete_hobby' hobby.pk %}" class="del-btn skill-del-btn">
+                    {% csrf_token %}
+                    <button type="submit"><img src="{% static 'assets/bin.png' %}" alt="delete-icon"/></button>
+                    <button><a href="{% url 'client:edit_hobby' hobby.pk %}">Edit</a></button>
+                </form>
+            </div>
+        {% endfor %}
+        <br>
+        <button class="add-experience-btn">+Add Hobby+</button> 
+    </div>   
+
+    <form method="post" action="" class="new-experience">
+        {% csrf_token %}
+        <h1>Hobby</h1>
+        <p>Listing 6-10 hobbies is best.</p>
+        <br>
+
+        <div class="input-div">
+            <div class="form-group">
+                {{ hobby_form.name }}
+                <span class="placeholder">{{ hobby_form.name.label_tag }}</span>
+            </div>
+        </div>        
+        
+        <br>
+        
+        <div class="button-div center">
+            <a href="" class="cancel-btn">Cancel</a>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    
+</div>
+<script src="{% static 'js/new-experience.js' %}"></script>
+
+{% endblock body %}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>template 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="template1.css"> -->
+        <style>
+            @page {
+                size: A4;
+            }
+            .resume{
+                border: 1px solid black;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+            .head-div{
+                height: 15%;
+                text-align: center;
+                border-bottom: 2px solid gray;
+                margin: 0 30px;
+                padding-top: 10px;
+            }
+            h1, p, li{
+                color: rgb(66, 66, 66);
+            }
+            /* .head-div .name{} */
+            .head-div .course-name{
+                font-size:small;
+            }
+            .resume .sides{
+                display: flex;
+                justify-content: space-between;
+                gap: 50px;
+            }
+            .resume .sides .left-side{
+                /*flex: .2;*/
+                background-color: rgb(235, 234, 234);
+            }
+            .resume .sides .right-side{
+                /* border: 1px solid black; */
+                /*flex: .77;*/
+            }
+            .section-name{
+                font-size: medium;
+            }
+            .contact-section,
+            .skills-section,
+            .education-section,
+            .languages-section{
+                border-bottom: 2px solid gray;
+                margin: 0 30px;
+                padding-top: 5px;
+            }
+            .contact-section p,
+            .skills-section p,
+            .education-section p,
+            .languages-section p{
+                font-size:x-small;
+                padding-left: 5px;
+            }
+            .education-section .education h1{
+                font-size:x-small;
+            }
+            .proffesional-summary,
+            .work-experience{
+                margin: 0 30px;
+                padding-top: 5px;
+            }
+            .proffesional-summary p,
+            .institution-date p,
+            .work-done-section li{
+                font-size: x-small;
+            }
+            .worked-at{
+                font-size:x-small;
+                margin-bottom: -5px;
+            }
+            .institution-date{
+                display: flex;
+                justify-content: space-between;
+                padding: 0 10px 0 0;
+            }
+            .experience{
+                margin-top: 5px;
+                padding: 5px;
+            }
+            .work-done-section li{
+                list-style-position: inside; /* Place the bullet inside the list item */
+                text-indent: -1.5em; /* Negative indent to create the hanging effect */
+                padding-left: 1.5em; /* Space for bullet point */
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="resume">
+            <div class="head-div">
+                <h1 class="name">{{ client.first_name|default:"" }} </h1>
+                <h1 class="course-name">{{ client.desired_job_title |default:"" }}</h1>
+            </div>
+            <div class="sides">
+                <div class="left-side">
+                    <div class="contact-section">
+                        <h1 class="section-name">CONTACT</h1>
+                        <p class="phone-number">{{ client.phone_number |default:""}}</p>
+                        <p class="email">{{ client.email |default:"" }}</p>
+                        <p class="location">{{ client.city |default:"" }}, {{ client.country |default:"" }}</p>
+                    </div>
+                    <div class="skills-section">
+                        <h1 class="section-name">SKILLS</h1>
+                        {% for skill in skills %}
+                            <p>{{ skill.name |default:"" }}</p>
+                        {% endfor %}    
+                    </div>
+                    <div class="education-section">
+                        <h1 class="section-name">EDUCATION</h1>
+                        <div class="education">
+                        {% for education in education_list %}
+                            <h1>{{ education.program_pursued |default:"" }}</h1>
+                            <p class="institution">{{ education.institution_name |default:"" }}</p>
+                            <p class="start-end">2020 - {{ education.graduation_year |default:"" }}</p>
+                            <p class="graduate-on">Graduated On: {{ education.graduation_year |default:"" }}</p>
+                        {% endfor %}    
+                        </div>
+                    </div>
+                    <div class="languages-section">
+                        <h1 class="section-name">LANGUAGES</h1>
+                        <p class="language">English</p>
+                        <p class="language">Swahili</p>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="proffesional-summary">
+                        <h1 class="section-name">PROFESSIONAL SUMMARY</h1>
+                        <p class="summary">
+                            {{ professional_summary.professional_summary|safe |default:"" }}
+                        </p>
+                    </div>
+                    <div class="work-experience">
+                        <h1 class="section-name">WORK EXPERIENCE</h1>
+                        {% for experience in experiences %}
+                            <div class="experience">
+                                <h1 class="worked-at">{{ experience.job_title |default:"" }}</h1>
+                                <div class="institution-date">
+                                    <p class="institution">{{ experience.company |default:"" }}</p>
+                                    <p class="date">{{ experience.start_month |default:"" }} {{ experience.start_year |default:"" }} - {{ experience.end_month |default:"" }} {{ experience.end_year |default:"" }}</p>
+                                </div>
+                                <div class="work-done-section">
+                                    <li class="work">Developed and implemented software solutions for clients utilizing Java, JavaScript, HTML and CSS</li>
+                                    <li class="work">Designed user interfaces using React.js, AngularJS, and jQuery libraries</li>
+                                    <li class="work">Troubleshot, debugged, and resolved technical issues with existing software applications.</li>
+                                    <li class="work">Participated in daily standup meetings to discuss progress on current tasks.</li>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="" async defer></script>
+    </body>
+</html>
