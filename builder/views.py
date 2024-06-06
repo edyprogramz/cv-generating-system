@@ -18,12 +18,14 @@ def index(request):
     return render(request, "home.html", {})
 
 def resumes(request):
+    client = get_object_or_404(Client, user=request.user)
     templates = TemplateModel.objects.all()
     categories = TemplateCategory.objects.all()
 
     return render(request, "resumes.html", {
         "templates":templates,
         "categories":categories,
+        "client": client
     })
 
 def category_resumes(request):
@@ -45,7 +47,6 @@ def generate_pdf(request, client_id, template_id):
     education_list = Education.objects.filter(client=client)
     skills = Skill.objects.filter(client=client)
     professional_summary = get_object_or_404(ProfessionalSummary, client=client)
-    # added
     languages = Language.objects.filter(client=client)
     references = Reference.objects.filter(client=client)
     hobbies = Hobby.objects.filter(client=client)
@@ -65,7 +66,6 @@ def generate_pdf(request, client_id, template_id):
         'education_list': education_list,
         'skills': skills,
         'professional_summary': professional_summary,
-        # added
         'languages':languages,
         'references':references,
         'hobbies':hobbies,

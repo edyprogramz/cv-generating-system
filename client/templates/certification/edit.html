@@ -13,7 +13,7 @@
     {% if edit_certification_form %}
     <form method="post" action="{% url 'client:edit_certification' edit_certification_form.instance.pk %}" class="experience-section right-side"> 
         {% csrf_token %}
-        <h1>Edit Skill</h1>
+        <h1>Certificate</h1>
         <br>
 
         <div class="input-div">
@@ -26,7 +26,7 @@
         <br>
         
         <div class="button-div center">
-            <a href="{% url 'client:client_skill_page' %}" class="cancel-btn">Cancel</a>
+            <a href="{% url 'client:client_certification_page' %}" class="cancel-btn">Cancel</a>
             <button type="submit">Update</button>
         </div>
     </form> 

@@ -62,15 +62,25 @@
     border: 1px solid black;
 }
 .categories{
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    /* margin: 0 -100px; */
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    gap: 5px;
+    padding: 20px 10px;
+    overflow: hidden;
+    background-color: aqua;
 }
 .category a{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     padding: 10px 20px;
+    /* height: 40px; */
     border-radius: 30px;
+    /* display: block; */
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: antiquewhite;
 }
 .category a:hover{
     background-color: aquamarine;

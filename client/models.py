@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator, URLValidator
 # Create your models here.
 
 class Client(models.Model):
@@ -8,10 +9,14 @@ class Client(models.Model):
     profile_img = models.ImageField(upload_to='client/profileImg/', null=True, blank=True)
     first_name = models.CharField(max_length=100, default='')
     last_name = models.CharField(max_length=100, default='')
-    phone_number = models.CharField(max_length=15, null=True, blank=True)
+    phone_number = models.CharField(
+        max_length=15,
+        null=True, blank=True,
+        validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")]
+    )
     country = models.CharField(max_length=15, default='')
     city = models.CharField(max_length=50, null=True, blank=True)
-    linkedIn_url = models.URLField(max_length=500, null=True, blank=True)
+    linkedIn_url = models.URLField(max_length=500, null=True, blank=True, validators=[URLValidator()])
     desired_job_title = models.CharField(max_length=100, default='')
     email = models.EmailField(null=True, blank=True)
 
@@ -88,7 +93,10 @@ class Reference(models.Model):
 
     name = models.CharField(max_length=100, default='')
     in_which_company = models.CharField(max_length=100, default='')
-    phone_number = models.CharField(max_length=100, default='')
+    phone_number = models.CharField(
+        max_length=15, default='',
+        validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")]
+    )
     email = models.EmailField(max_length=100, default='')
 
     def __str__(self):

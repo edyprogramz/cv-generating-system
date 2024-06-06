@@ -8,7 +8,7 @@
 {% block body %}
 <div class="resumes-page">
     <div class="hero-page">
-        <h2>Resume Templates</h2>
+        <h2>Find A Resume That Suits You</h2>
         <br>
         <p>Need a job? Our huge range of free resume templates can help. Simply choose your favorite, download directly to Word or open in Google Docs, and fill it out. We also provide a copy-paste template, and show you how to fill out your own resume template with an instructional video.</p>
         <br>
@@ -17,16 +17,16 @@
     </div>
 
     <div class="templates">
+        <!--popular categories-->
         <div class="categories">
-            {% for category in categories %}
+            {% for category in categories|slice:":8" %}
                 <div class="category">
                     <a href="">{{category}}</a>
                 </div>
             {% endfor %}
         </div>
-        
-        <div class="template-preview">
-            {% for template in templates %}
+        {% for template in templates %}
+            <div class="template-preview">
                 <div class="template-thumbnails-div">
                     <img src="{{template.template_thumbnail.url}}" alt="template-img">
                 </div>
@@ -40,10 +40,10 @@
                         <br>
                         <a class="hero-btn temp-desc-btn" href="{% url 'client:client_contact_page' %}">Build My Resume Now</a>
                     </div>
+                    <a href="{% url 'builder:generate_pdf' client.id template.id %}">GENERATE pdf</a>
                 </div>
-                    
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
     
     

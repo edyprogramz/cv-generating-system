@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+        <!--<link rel="stylesheet" href="template2.css">-->
+        <style>
+            :root {
+                --theme-color: #4682B4;
+                /* --theme-color: gray; */
+                /* --theme-color: rgb(58, 110, 69); */
+                /* --theme-color: rgb(97, 97, 150); */
+            }
+            @page {
+                size: A4;
+            }
+            body{
+                border: 2px solid black;
+                font-family: sans-serif;
+                height: 10in;
+                /* font-size: 14px; */
+            }
+            .container{
+                background-color: whitesmoke;
+                color: rgb(56, 53, 53);
+                /* margin: 10px;     */
+                padding: 5px;
+                display: flex;
+            }
+            .separator {
+                height: 10px;
+                display: inline-block;
+                border-left: 2px solid #999;
+                margin: 0px 10px;
+            }
+            .img{
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+            .img img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .aside{
+                padding: 5px;
+            }
+            .first-section{
+                text-align: center;
+            }
+            .main{
+                padding: 5px;
+                padding-left: 20px;
+                border-left: 5px solid var(--theme-color);
+            }
+
+            .fa-location-dot,
+            .fa-envelope,
+            .fa-phone-volume{
+                padding: 5px;
+                border-radius: 50%;
+                color: var(--theme-color);
+            }
+            .hobbies-section,
+            .language-section{
+                padding: 5px;
+            }
+            .section-title{
+                font-size:small;
+                color: var(--theme-color);
+                padding-bottom: 10px;
+                border-bottom: 3px solid var(--theme-color);
+            }
+            .names{
+                display: flex;
+                gap: 10px;
+            }
+            .last-name{
+                color: var(--theme-color);
+            }
+            .summary-section p{
+                padding: 7px;
+                font-family: 'Trebuchet MS';
+            }
+            .education .header{
+                display: flex;
+                align-items: center;
+            }
+
+            .education .header .course{
+                font-weight: 700;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="resume">
+            <div class="container">
+                <div class="aside">
+                    <div class="first-section">
+                        <div class="img">
+                            <img src="{{ client.profile_img.url |default:'' }}" alt="prof-img"/>
+                        </div>
+                        <br>
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <p>{{ client.phone_number |default:""}}</p>
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>{{ client.email |default:"" }}</p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>{{ client.city |default:"" }}, {{ client.country |default:"" }}</p>
+                    </div>
+                    <div class="language-section">
+                        <h2 class="section-title">LANGUAGES</h2>
+                        {% for language in languages|slice:":3" %}
+                            <li>{{language.name | default:""}}</li>
+                        {% endfor %}
+                    </div>
+                    <div class="hobbies-section">
+                        <h2 class="section-title">HOBBIES</h2>
+                        {% for hobby in hobbies|slice:":4" %}
+                            <li>{{hobby.name | default:""}}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="names">
+                        <h1 class="first-name">{{ client.first_name|default:"" }}</h1>
+                        <h1 class="last-name">{{ client.last_name|default:"" }}</h1>
+                    </div>
+                    <div class="summary-section">
+                        <h2 class="section-title">SUMMARY</h2>
+                        <p>
+                            {{ professional_summary.professional_summary|safe |default:"" }}
+                        </p>
+                    </div>
+                    <div class="education-section">
+                        <h2 class="section-title">EDUCATION</h2>
+                        {% for education in education_list|slice:":1" %}
+                            <div class="education">
+                                <div class="header">
+                                    <p class="course">{{ education.program_pursued |default:"" }}</p>
+                                    <span class="separator"></span>
+                                    <p>{{ education.graduation_year |default:"" }}</p>
+                                </div>
+                                <p>{{ education.institution_name |default:"" }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="skill-section">
+                        <h2 class="section-title">SKILL SET</h2>
+                        {% for skill in skills|slice:":6" %}
+                        <li>{{ skill.name |default:"" }}</li>
+                        {% endfor %}
+                    </div>
+                    <div class="certification-section">
+                        <h2 class="section-title">CERTIFICATION</h2>
+                        {% for certification in certifications|slice:":2" %}
+                            <li>{{certification}}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
