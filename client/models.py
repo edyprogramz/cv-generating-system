@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, URLValidator
+
+from django.utils import timezone
+from datetime import timedelta
 # Create your models here.
 
 class Client(models.Model):
@@ -19,9 +22,21 @@ class Client(models.Model):
     linkedIn_url = models.URLField(max_length=500, null=True, blank=True, validators=[URLValidator()])
     desired_job_title = models.CharField(max_length=100, default='')
     email = models.EmailField(null=True, blank=True)
+    has_paid = models.BooleanField(default=False)
+    subscription_expires = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.user.username
+    
+    def activate_subscription(self):
+        self.has_paid = True
+        self.subscription_expires = timezone.now() + timedelta(weeks=2)
+        self.save()
+
+    def subscription_active(self):
+        if self.subscription_expires and self.subscription_expires > timezone.now():
+            return True
+        return False
       
 class Experience(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)

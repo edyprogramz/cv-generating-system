@@ -19,9 +19,9 @@
             <li><a href="/" alt="logo">Resume<span class="logospan">Ke</span></a></li>
             <ul class="routers">
                 <li><a class="nav-start-btn" href="{% url 'client:client_contact_page' %}">Build My Resume Now</a></li>
-                <li><a href="{% url 'builder:browse_resume_category' %}">Find your kind of Resume Now?</a></li>
+                {% comment %} <li><a href="{% url 'resumes:browse_resume_category' %}">Find your kind of Resume Now?</a></li> {% endcomment %}
                 <li><a href="{% url 'client:client_contact_page' %}">Builders</a></li>
-                <li><a href="{% url 'builder:browse_resume' %}">Resumes</a></li>
+                <li><a href="{% url 'resumes:index' %}">Resumes</a></li>
                 {% if request.user.is_authenticated %}
                     {% comment %} <li>Welcome Back</li> {% endcomment %}
                     {% comment %} <li>{{request.user.username}}</li> {% endcomment %}

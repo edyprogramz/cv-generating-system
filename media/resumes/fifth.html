@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            :root {
+                --theme-color: papayawhip;
+            }
+            @page {
+                size: A4;
+            }
+            body{
+                border: 2px solid black;
+                width: 6.1in;
+                height: 7.86in;
+                padding: 5px;
+            }
+            .container{
+                /* border: 2px solid black; */
+                display: flex;
+                justify-content: space-between;
+                background-color: var(--theme-color);
+                font-family: "Roboto Condensed", sans-serif;
+                font-size: small;
+            }
+            .aside{
+                border: 1px solid black;
+                flex: .3;
+                border-top-left-radius: 100px;
+                border-top-right-radius: 100px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                padding: 5px;
+                margin-top: 5px;
+            }
+            .right-section{
+                flex: .685;
+            }
+            .profile-img{
+                height: 180px;
+                width: 180px;
+                margin: auto;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+            .profile-img img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .section-title{
+                border: 2px solid black;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                width: fit-content;
+                padding: 5px 9px;
+                padding-right: 3px;
+                margin-bottom: 7px;
+            }
+            .section-title i{
+                font-size: 21px;
+            }
+            .language-section,
+            .education-section,
+            .contact-section{
+                margin-top: 20px;
+                margin: 9px;
+            }
+
+            .education,
+            .address,
+            .email,
+            .phone{
+                padding: 10px 0 5px 4px;
+                border-bottom: 2px solid rgb(182, 178, 178);
+            }
+            .education:last-child,
+            .address{
+                border: none;
+            }
+            .name-jobname-section{
+                text-align: center;
+                width: fit-content;
+                margin: auto;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+            .name-jobname-section h1{
+                font-family: cursive;
+            }
+            .name-jobname-section h4{
+                width: fit-content;
+                margin: auto;
+            }
+            .reference-section,
+            .experience-section,
+            .summary-section{
+                border: 1px solid black;
+                padding: 10px;
+                margin-bottom: 5px;
+                border-radius: 10px;
+            }
+            .experience{
+                margin-bottom: 15px;
+            }
+            .reference-div{
+                display: flex;
+                gap: 10px;
+            }
+            .reference:first-child{
+                border-right: 2px solid black;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="aside">
+                <div class="profile-img">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile-img"/>
+                </div>
+                <div class="contact-section">
+                    <div class="section-title">
+                        <h2>Contact</h2>
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </div>
+                    <div class="phone">
+                        <h3>Phone</h3>
+                        <p>(001)46436627</p>
+                    </div>
+                    <div class="email">
+                        <h3>Email</h3>
+                        <p>info@shoppy.com</p>
+                    </div>
+                    <div class="address">
+                        <h3>Address</h3>
+                        <p>New York, USA</p>
+                    </div>
+                </div>
+                <div class="education-section">
+                    <div class="section-title">
+                        <h2>Education</h2>
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </div>
+                    <div class="education">
+                        <h3>2009 - 2011</h3>
+                        <p>University name</p>
+                        <p>Course Name</p>
+                    </div>
+                    <div class="education">
+                        <h3>2005 - 2008</h3>
+                        <p>University name</p>
+                        <p>Course Name</p>
+                    </div>
+                </div>
+                <div class="language-section">
+                    <div class="section-title">
+                        <h2>Language</h2>
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </div>
+                    <p>
+                        - <span class="language">English</span> 
+                        - <span class="language">French</span> 
+                        - <span class="language">Spanish</span> 
+                        - <span class="language">Swahili</span> 
+                    </p>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="name-jobname-section">
+                    <h1>Sarah Hassan</h1>
+                    <h4>Marketing Manager</h4>
+                </div><br>
+                <div class="summary-section">
+                    <div class="section-title">
+                        <h2>Profile</h2>
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </div>
+                    <p>
+                        Opening Statement: A brief introduction that includes your job title and years of experience.
+                        Key Qualifications: Highlight your most important skills and areas of expertise.
+                        Accomplishments: Mention notable achievements or significant contributions in your previous roles.
+                        Career Goals: Indicate what you are looking for in your next position and how you aim to contribute to the potential employer.
+                    </p>
+                </div>
+                <div class="experience-section">
+                    <div class="section-title">
+                        <h2>Experience</h2>
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </div>
+                    <div class="experience">
+                        <h3>2020 - 2021</h3>
+                        <h4>Diamond Jones Bar & Restaurant</h4>
+                        <p>
+                            Be Concise: Keep bullet points brief and to the point.
+                            Use Action Verbs: Start each bullet point with a strong action verb (e.g., Led, Managed, Developed, Implemented, Increased).                        </p>
+                    </div>
+                    <div class="experience">
+                        <h3>2019 - 2020</h3>
+                        <h4>Company Name</h4>
+                        <p>
+                            Be Concise: Keep bullet points brief and to the point.
+                            Use Action Verbs: Start each bullet point with a strong action verb (e.g., Led, Managed, Developed, Implemented, Increased).                        </p>
+                    </div>
+                </div>
+                <div class="reference-section">
+                    <div class="section-title">
+                        <h2>Reference</h2>
+                        <i class="fa-solid fa-circle-arrow-down"></i>
+                    </div>
+                    <div class="reference-div">
+                        <div class="reference">
+                            <h4>Reference Name</h4>
+                            <p>Position in Company</p><br>
+                            <p>Phone: (001)36646230</p>
+                            <p>Email: sgjjsdhjd@gmail.com</p>
+                        </div>
+                        <div class="reference">
+                            <h4>Reference Name</h4>
+                            <p>Position in Company</p><br>
+                            <p>Phone: (001)36646230</p>
+                            <p>Email: sgjjsdhjd@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

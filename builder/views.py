@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from builder.models import Template as TemplateModel, TemplateCategory
+from resumes.models import Template as TemplateModel, TemplateCategory
 from django.template import Template, Context
 from django.contrib.auth.decorators import login_required
 from weasyprint import HTML
@@ -17,29 +17,13 @@ from bs4 import BeautifulSoup
 def index(request):
     return render(request, "home.html", {})
 
-def resumes(request):
-    client = get_object_or_404(Client, user=request.user)
-    templates = TemplateModel.objects.all()
-    categories = TemplateCategory.objects.all()
-
-    return render(request, "resumes.html", {
-        "templates":templates,
-        "categories":categories,
-        "client": client
-    })
-
-def category_resumes(request):
-    templates = TemplateModel.objects.all()
-    categories = TemplateCategory.objects.all()
-
-    return render(request, "category-resumes.html", {
-        "templates":templates,
-        "categories":categories,
-    })
-
 def generate_pdf(request, client_id, template_id):
-    # Fetch the client and template data
     client = get_object_or_404(Client, id=client_id)
+
+    if not client.subscription_active():
+        return redirect('payments:paypal_view', client_id=client_id, template_id=template_id)
+
+    # Fetch the template data
     template_model = get_object_or_404(TemplateModel, id=template_id)
 
     # Fetch related data

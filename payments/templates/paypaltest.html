@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+{% endblock head %}
+
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <li>{{message}}</li>
+        {% endfor %}
+    {% endif %}
+    
+    <h2>Paypal</h2>
+    {{form.render}}
+
+{% endblock body %}

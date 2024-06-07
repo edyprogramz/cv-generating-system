@@ -25,8 +25,11 @@ SECRET_KEY = 'django-insecure-(veloc_2+6^q^h)8a0&8w_553szzby-gc1%#cb+!^(@=sjg0&l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    '',
+]
 
 # Application definition
 
@@ -41,8 +44,12 @@ INSTALLED_APPS = [
     'builder',
     'user',
     'client', 
+    'resumes',
+    'payments',
     
-    'ckeditor',
+    'ckeditor', # admin dashboard
+    #paypal
+    'paypal.standard.ipn',
     # 'ckeditor_uploader',
 
     # not in use 
@@ -141,6 +148,7 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# ckeditor settings 
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
@@ -151,4 +159,9 @@ CKEDITOR_CONFIGS = {
         'codeSnippet_theme': 'monokai_sublime',
     },
 }
+# paypal settings
+PAYPAL_TEST = True
 
+PAYPAL_RECEIVER_EMAIL = 'sb-maw47831046650@business.example.com'
+
+# PAYPAL_BUY_BUTTON_IMAGE = 'https://th.bing.com/th/id/R.e6abc7c7262efbc55a42d96d01232365?rik=9WX5hVjgV91yGg&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fthumb%2fb%2fb5%2fPayPal.svg%2f1920px-PayPal.svg.png&ehk=AerOMveEuupvHKYtxTiy2eGDCGRLPD%2bV0GHukwqXqpw%3d&risl=&pid=ImgRaw&r=0'

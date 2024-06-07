@@ -25,5 +25,8 @@ urlpatterns = [
     path('', include("builder.urls")),
     path('user/', include('user.urls')),
     path('client/', include('client.urls')),
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('resumes/', include('resumes.urls')),
+    path('payments/', include('payments.urls')),
+    
+    path('paypal/', include('paypal.standard.ipn.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
